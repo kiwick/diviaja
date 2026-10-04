@@ -1,0 +1,19 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { contact, sitePath } from '../config/site';
+---
+<LegalLayout title="Política de cookies" description="Información sobre cookies, navegación y servicios externos utilizados por Diviaja." path="cookies">
+  <p>Las cookies son pequeños archivos que un sitio puede guardar en tu navegador. Otras tecnologías, como el almacenamiento local, también permiten conservar información en tu dispositivo.</p>
+  <h2>Al navegar por Diviaja</h2>
+  <p>Diviaja no incorpora herramientas de analítica ni publicidad. Sus páginas no guardan cookies propias ni información en el almacenamiento local o de sesión del navegador. Las imágenes y las fuentes se sirven desde el propio sitio, sin cargar vídeos, mapas o módulos de redes sociales de terceros.</p>
+  <p>Por ese motivo, no mostramos un panel para aceptar o rechazar cookies en estas páginas. Si incorporamos tecnologías que necesiten consentimiento, lo solicitaremos antes de activarlas.</p>
+  <h2>Al enviar el formulario</h2>
+  <p>El formulario se muestra en Diviaja. Al pulsar «Enviar mi idea», los datos se envían al servicio externo FormSubmit, que utiliza reCAPTCHA para proteger el envío frente a usos automatizados. FormSubmit y reCAPTCHA no se cargan al abrir o rellenar el formulario de Diviaja.</p>
+  <p>FormSubmit informa de que puede utilizar cookies. Google explica que reCAPTCHA utiliza la cookie <code>_GRECAPTCHA</code> al ejecutarse para analizar el riesgo de un uso automatizado. Esa información corresponde al servicio externo; no es una cookie que Diviaja instale al navegar por sus páginas.</p>
+  <p>Puedes consultar la <a href="https://formsubmit.co/privacy.pdf">información de privacidad de FormSubmit</a> y la <a href="https://developers.google.com/recaptcha/docs/faq#does-recaptcha-use-cookies">documentación de Google sobre las cookies de reCAPTCHA</a>.</p>
+  <h2>Enlaces a servicios externos</h2>
+  <p>Los botones de WhatsApp abren ese servicio cuando decides utilizarlos. No hay un chat de WhatsApp integrado que se cargue durante la navegación. Los servicios que visites a través de enlaces tienen sus propias condiciones de privacidad y cookies.</p>
+  <h2>Cómo gestionar las cookies</h2>
+  <p>Puedes consultar, eliminar o bloquear cookies desde la configuración de privacidad de tu navegador. Bloquear las que necesite un servicio externo puede impedir que algunas de sus funciones estén disponibles.</p>
+  <p>Para conocer cómo se tratan los datos de tu consulta, consulta la <a href={sitePath('privacidad')}>política de privacidad</a>. Si tienes dudas, puedes escribir a <a href={`mailto:${contact.email}`}>{contact.email}</a>.</p>
+</LegalLayout>

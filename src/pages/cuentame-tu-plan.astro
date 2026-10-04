@@ -37,7 +37,7 @@ const next = new URL(sitePath('gracias'), Astro.site).href;
           <div class="form-field"><label for="travelers">Número de viajeros (opcional)</label><input id="travelers" name="Número de viajeros" type="number" min="1" step="1" inputmode="numeric" /></div>
           <div class="form-field full-row"><label for="message">Qué tienes en mente? *</label><textarea id="message" name="message" placeholder="Cuéntame tu idea, lo que te apetece y cualquier detalle que deba tener en cuenta." required></textarea></div>
         </div>
-        <div class="privacy-consent"><input id="privacy" name="Privacidad" type="checkbox" value="Aceptada" required /><label for="privacy">He leído y acepto la <a href={sitePath('privacidad')} target="_blank" rel="noopener">política de privacidad<span class="visually-hidden"> (se abre en otra pestaña)</span></a>.</label></div>
+        <div class="privacy-consent"><input id="privacy" name="Privacidad" type="checkbox" value="Información leída" required /><label for="privacy">He leído la <a href={sitePath('privacidad')} target="_blank" rel="noopener">política de privacidad<span class="visually-hidden"> (se abre en otra pestaña)</span></a>.</label></div>
         <button class="button" type="submit" disabled>Enviar mi idea <Icon name="arrow" /></button>
         <noscript><p class="form-note">Activa JavaScript para validar el teléfono según tu preferencia de contacto y enviar el formulario.</p></noscript>
         <p id="required-note" class="form-note">Los campos con * son obligatorios.</p>

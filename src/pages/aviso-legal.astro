@@ -1,0 +1,21 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { contact, sitePath } from '../config/site';
+---
+<LegalLayout title="Aviso legal" description="Información sobre la titular de Diviaja, el uso de esta web y sus contenidos." path="aviso-legal">
+  <h2>Titular y contacto</h2>
+  <p>La titular de Diviaja es Diana Román de la Cruz. Puedes contactar con ella en <a href={`mailto:${contact.email}`}>{contact.email}</a>.</p>
+  <h2>Qué encontrarás en esta web</h2>
+  <p>Diviaja presenta la ayuda que ofrece Diana para organizar viajes, escapadas, entradas y experiencias. Puedes explicar tu idea mediante el formulario o los canales de contacto indicados.</p>
+  <p>El envío de una consulta no confirma una reserva ni realiza un pago. Antes de decidir sobre un servicio concreto, debes disponer de la información sobre sus características, quién lo presta, su precio y las condiciones aplicables.</p>
+  <h2>Uso de la web</h2>
+  <p>Puedes consultar los contenidos y contactar para plantear tu viaje. Utiliza los canales de contacto de forma respetuosa y no envíes información falsa, contenido ilícito ni archivos o mensajes destinados a perjudicar a otras personas o al funcionamiento del servicio.</p>
+  <h2>Contenidos y propiedad intelectual</h2>
+  <p>Los textos, fotografías, ilustraciones, logotipos y demás contenidos pueden estar protegidos por derechos de propiedad intelectual o industrial de sus respectivos titulares. Consultar la web no supone adquirir esos derechos.</p>
+  <p>Cualquier uso de los contenidos debe respetar las licencias y los usos permitidos por la ley. Para solicitar un uso que requiera autorización, puedes escribir a Diana. La aparición de una marca de terceros no modifica la titularidad de esa marca.</p>
+  <h2>Información y funcionamiento</h2>
+  <p>Los contenidos generales sirven para conocer el servicio y plantear una consulta; no sustituyen la información específica de una reserva. Si detectas un error, comunícalo para que pueda revisarse.</p>
+  <p>Los enlaces externos permiten acceder a otros servicios, como WhatsApp. Sus condiciones corresponden a sus respectivos prestadores. Este aviso no limita los derechos que te reconoce la ley ni excluye responsabilidades que legalmente correspondan.</p>
+  <h2>Privacidad y cookies</h2>
+  <p>Puedes consultar la <a href={sitePath('privacidad')}>política de privacidad</a> para conocer el tratamiento de los datos y la <a href={sitePath('cookies')}>política de cookies</a> para saber qué tecnologías utiliza la web.</p>
+</LegalLayout>

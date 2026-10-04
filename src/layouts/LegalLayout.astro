@@ -1,0 +1,29 @@
+---
+import SiteLayout from './SiteLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { sitePath } from '../config/site';
+interface Props { title: string; description: string; path: string; noindex?: boolean; }
+const { title, description, path, noindex = true } = Astro.props;
+---
+<SiteLayout title={`${title} · Diviaja`} description={description} path={path} noindex={noindex}>
+  <SiteHeader />
+  <main id="contenido" tabindex="-1" class="container legal-page">
+    <a class="back-home" href={sitePath()}>Volver al inicio</a>
+    <article class="legal-copy">
+      <h1>{title}</h1>
+      <slot />
+    </article>
+  </main>
+  <SiteFooter />
+</SiteLayout>
+<style>
+  .legal-page { padding-block: 32px 40px; }
+  .back-home { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 16px; font-size: .9rem; }
+  .legal-copy { max-width: 70ch; overflow-wrap: anywhere; }
+  .legal-copy h1 { font-size: clamp(2rem, 4vw, 3.75rem); }
+  .legal-copy :global(h2) { font-size: clamp(1.6rem, 2.7vw, 2rem); margin-top: 24px; }
+  .legal-copy :global(p), .legal-copy :global(ul) { margin-top: 16px; }
+  .legal-copy :global(ul) { padding-left: 24px; }
+  .legal-copy :global(li + li) { margin-top: 8px; }
+</style>

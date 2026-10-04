@@ -22,7 +22,7 @@
 .plan-form .button { width: 100%; font-family: inherit; cursor: pointer; }
 .plan-form .button:disabled { opacity: .65; cursor: not-allowed; }
 .form-note { margin-top: 12px; font-size: .82rem; }
-.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; clip-path: inset(50%); white-space: nowrap; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .thanks-page { padding-block: 48px; text-align: center; }
 .thanks-page h1 { max-width: 20ch; margin-inline: auto; font-size: clamp(2rem, 4vw, 3.75rem); }
 .thanks-page p { max-width: 54ch; margin: 20px auto 24px; }
