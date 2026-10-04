@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Icon from '../components/Icon.astro';
+import { contact, sitePath } from '../config/site';
+import london from '../../design/fotos-reales-v3/londres-tower-bridge-retocada.png';
+import '../styles/contact-form.css';
+const next = new URL(sitePath('gracias'), Astro.site).href;
+---
+<SiteLayout title="Cuéntame tu plan · Diviaja" description="Cuéntale a Diana tu idea de viaje, escapada o entradas. No necesitas tenerlo todo decidido: empezamos por tu idea." path="cuentame-tu-plan">
+  <SiteHeader />
+  <main id="contenido" tabindex="-1" class="container plan-page">
+    <a class="back-home" href={sitePath()}>Volver al inicio</a>
+    <div class="plan-layout">
+      <div class="plan-introduction">
+        <h1>Tu próximo plan empieza aquí.</h1>
+        <p class="plan-lead">Cuéntame qué tienes en mente. No necesitas tenerlo todo decidido.</p>
+        <h2>Lo vemos contigo.</h2>
+        <p>Un viaje completo, una escapada o solo unas entradas. Empezamos por tu idea.</p>
+        <Image src={london} alt="Tower Bridge sobre el Támesis, en Londres" widths={[480, 720, 960]} sizes="(min-width: 1248px) 426px, 36vw" format="webp" class="plan-photo" />
+      </div>
+      <form class="plan-form" action={`https://formsubmit.co/${contact.email}`} method="POST" aria-label="Cuéntame tu plan" aria-describedby="required-note service-note">
+        <input type="hidden" name="_subject" value="Nueva idea de viaje · Diviaja" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value={next} />
+        <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-fields">
+          <div class="form-field"><label for="name">Nombre *</label><input id="name" name="name" autocomplete="name" required /></div>
+          <div class="form-field"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="form-field"><label for="phone">Teléfono <span id="phone-requirement" aria-live="polite">(opcional)</span></label><input id="phone" name="Teléfono" type="tel" autocomplete="tel" /></div>
+          <div class="form-field"><label for="contact-preference">Cómo prefieres que contacte contigo? *</label><select id="contact-preference" name="Preferencia de contacto" required><option value="">Selecciona una opción</option><option>Email</option><option>WhatsApp</option><option>Teléfono</option></select></div>
+          <div class="form-field full-row"><label for="plan">Qué te gustaría organizar?</label><select id="plan" name="Tipo de plan"><option value="">Selecciona una opción</option><option>Viaje</option><option>Escapada</option><option>Viaje en familia</option><option>Entradas o experiencias</option><option>Otro</option></select></div>
+          <div class="form-field full-row"><label for="destination">Destino o experiencia (opcional)</label><input id="destination" name="Destino o experiencia" placeholder="Un lugar, unas entradas… o todavía no lo sé" /></div>
+          <div class="form-field"><label for="dates">Fechas aproximadas (opcional)</label><input id="dates" name="Fechas aproximadas" /></div>
+          <div class="form-field"><label for="travelers">Número de viajeros (opcional)</label><input id="travelers" name="Número de viajeros" type="number" min="1" step="1" inputmode="numeric" /></div>
+          <div class="form-field full-row"><label for="message">Qué tienes en mente? *</label><textarea id="message" name="message" placeholder="Cuéntame tu idea, lo que te apetece y cualquier detalle que deba tener en cuenta." required></textarea></div>
+        </div>
+        <div class="privacy-consent"><input id="privacy" name="Privacidad" type="checkbox" value="Aceptada" required /><label for="privacy">He leído y acepto la <a href={sitePath('privacidad')} target="_blank" rel="noopener">política de privacidad<span class="visually-hidden"> (se abre en otra pestaña)</span></a>.</label></div>
+        <button class="button" type="submit" disabled>Enviar mi idea <Icon name="arrow" /></button>
+        <noscript><p class="form-note">Activa JavaScript para validar el teléfono según tu preferencia de contacto y enviar el formulario.</p></noscript>
+        <p id="required-note" class="form-note">Los campos con * son obligatorios.</p>
+        <p id="service-note" class="form-note">Al enviar, tus datos se tramitan a través de FormSubmit para que Diana pueda responderte.</p>
+      </form>
+    </div>
+  </main>
+  <SiteFooter />
+</SiteLayout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('.plan-form');
+  const preference = document.querySelector<HTMLSelectElement>('#contact-preference');
+  const phone = document.querySelector<HTMLInputElement>('#phone');
+  const requirement = document.querySelector<HTMLElement>('#phone-requirement');
+  const submit = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  if (form && preference && phone && requirement && submit) {
+    const updatePhoneRequirement = () => {
+      const required = preference.value === 'WhatsApp' || preference.value === 'Teléfono';
+      phone.required = required;
+      const label = required ? '(obligatorio) *' : '(opcional)';
+      if (requirement.textContent !== label) requirement.textContent = label;
+      phone.setCustomValidity(required && !phone.value.trim() ? 'Indica tu teléfono para que Diana pueda contactar contigo por la vía elegida.' : '');
+    };
+    preference.addEventListener('change', updatePhoneRequirement);
+    phone.addEventListener('input', updatePhoneRequirement);
+    window.addEventListener('pageshow', updatePhoneRequirement);
+    form.addEventListener('reset', () => setTimeout(updatePhoneRequirement, 0));
+    updatePhoneRequirement();
+    submit.disabled = false;
+  }
+</script>

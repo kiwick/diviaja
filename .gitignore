@@ -147,3 +147,11 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Local review material and supplied package references
+reports/
+*.zip
+design/references/
+design/**/referencias/
+design/harry-potter/
+design/fotos-reales-v3/originales-londres/

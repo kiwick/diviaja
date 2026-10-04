@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import hogwarts from '../../design/entradas-experiencias/assets/harry-potter-hogwarts.jpeg';
+import universal from '../../design/entradas-experiencias/assets/universal-orlando.png';
+import magicKingdom from '../../design/entradas-experiencias/assets/magic-kingdom.png';
+import formula from '../../design/entradas-experiencias/assets/formula-1.png';
+import motogp from '../../design/entradas-experiencias/assets/motogp.png';
+const scenes = [
+  { id: 'hogwarts', name: 'Harry Potter', image: hogwarts, alt: 'Maqueta de Hogwarts en los estudios de Harry Potter cerca de Londres' },
+  { id: 'universal', name: 'Universal Orlando', image: universal, alt: 'Globo de Universal entre palmeras' },
+  { id: 'magic', name: 'Magic Kingdom', image: magicKingdom, alt: 'Castillo de torres azules como representación de Magic Kingdom' },
+  { id: 'formula', name: 'Fórmula 1', image: formula, alt: 'Monoplaza en un circuito de automovilismo' },
+  { id: 'motogp', name: 'MotoGP', image: motogp, alt: 'Motorista inclinado en una curva de circuito' },
+];
+// Source widths allow for the lateral crop of the taller park tiles.
+const parkSizes = '(min-width: 1248px) 310px, (min-width: 1024px) 25vw, (min-width: 600px) 45vw, 72vw';
+const wideSizes = '(min-width: 1248px) 330px, (min-width: 1024px) 28vw, (min-width: 600px) 48vw, 48vw';
+---
+<div class="tickets-collage">
+  {scenes.map((scene, index) => <figure class={`ticket-tile ticket-tile--${scene.id}`}>
+    <Image src={scene.image} alt={scene.alt} format="webp" quality={82}
+      widths={[320, 480, 640, 960, 1200]}
+      sizes={index === 0 ? `(max-width: 599px) calc(100vw - 40px), ${parkSizes}` : index < 3 ? parkSizes : wideSizes} loading="lazy" />
+    <figcaption>{scene.name}</figcaption>
+  </figure>)}
+</div>

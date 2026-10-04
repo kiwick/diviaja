@@ -1,0 +1,36 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { contact, sitePath } from '../config/site';
+import '../styles/contact-form.css';
+---
+<SiteLayout title="Privacidad · Diviaja" description="Información sobre los datos del formulario de Diviaja y su tramitación mediante FormSubmit." path="privacidad" noindex>
+  <SiteHeader />
+  <main id="contenido" tabindex="-1" class="container privacy-page">
+    <a class="back-home" href={sitePath()}>Volver al inicio</a>
+    <div class="privacy-copy">
+      <h1>Política de privacidad</h1>
+      <p>Cuando cuentas tu idea a través de Diviaja, compartes los datos necesarios para que Diana pueda conocer tu plan y responderte. Aquí te explicamos cómo se utilizan.</p>
+      <h2>Quién trata tus datos</h2>
+      <p>Diviaja es el proyecto de viajes con Diana. Responsable del tratamiento: [NOMBRE COMPLETO O RAZÓN SOCIAL PENDIENTE]. Identificación fiscal: [DATO PENDIENTE]. Dirección: [DIRECCIÓN POSTAL PENDIENTE].</p>
+      <p>Puedes contactar por correo en <a href={`mailto:${contact.email}`}>{contact.email}</a>.</p>
+      <h2>Qué información envías</h2>
+      <p>El formulario solicita tu nombre, correo electrónico, preferencia de contacto y mensaje. El teléfono es obligatorio si eliges WhatsApp o Teléfono y opcional si eliges Email. Puedes añadir tipo de plan, destino o experiencia, fechas aproximadas y número de viajeros. También se envía tu aceptación de esta política. Estos datos permiten a Diana conocer tu idea y responder a tu consulta por la vía elegida.</p>
+      <p>No incluyas información de salud, documentos de identidad ni datos personales de menores en el mensaje.</p>
+      <h2>Para qué se utilizan</h2>
+      <p>Diana utiliza la información de tu consulta para entender lo que buscas y ponerse en contacto contigo por la vía que elijas. Enviar el formulario no te suscribe a boletines ni a comunicaciones comerciales.</p>
+      <p>Base jurídica del tratamiento: [BASE JURÍDICA PENDIENTE].</p>
+      <h2>Cómo llega tu consulta</h2>
+      <p>Al pulsar «Enviar mi idea», tus datos se envían a FormSubmit, el servicio externo que entrega la consulta por correo a Diana. FormSubmit utiliza reCAPTCHA para ayudar a evitar envíos automatizados y puede usar cookies durante el uso de su servicio. Puedes consultar su <a href="https://formsubmit.co/privacy.pdf">política de privacidad y condiciones</a>.</p>
+      <p>Otros proveedores que intervienen en el tratamiento: [INFORMACIÓN PENDIENTE]. Tratamiento de datos fuera del Espacio Económico Europeo: [INFORMACIÓN SOBRE TRANSFERENCIAS INTERNACIONALES Y GARANTÍAS PENDIENTE].</p>
+      <h2>Durante cuánto tiempo se conservan</h2>
+      <p>Según su <a href="https://formsubmit.co/documentation">documentación</a>, FormSubmit conserva los envíos durante 30 días en su archivo. Este plazo corresponde al servicio de envío, no a los correos que recibe Diana.</p>
+      <p>Conservación de las consultas y correos por parte del responsable: [PLAZO O CRITERIOS DE CONSERVACIÓN PENDIENTES].</p>
+      <h2>Tus derechos y consultas</h2>
+      <p>Para consultas sobre el uso de tus datos puedes escribir a <a href={`mailto:${contact.email}`}>{contact.email}</a>.</p>
+      <p>Ejercicio de derechos: [INFORMACIÓN SOBRE DERECHOS Y PROCEDIMIENTO PENDIENTE]. Reclamaciones: [AUTORIDAD COMPETENTE Y VÍA DE RECLAMACIÓN PENDIENTES].</p>
+    </div>
+  </main>
+  <SiteFooter />
+</SiteLayout>
