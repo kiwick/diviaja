@@ -1,0 +1,16 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { sitePath } from '../config/site';
+import '../styles/contact-form.css';
+---
+<SiteLayout title="Gracias por tu idea · Diviaja" description="Gracias por contarle tu idea a Diana." path="gracias" noindex>
+  <SiteHeader />
+  <main id="contenido" tabindex="-1" class="container thanks-page">
+    <h1>Gracias por contarme tu idea.</h1>
+    <p>Tu solicitud se ha enviado. La revisaré y me pondré en contacto contigo.</p>
+    <a class="button" href={sitePath()}>Volver al inicio</a>
+  </main>
+  <SiteFooter />
+</SiteLayout>

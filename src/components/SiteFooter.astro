@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import Brand from './Brand.astro';
+import { futurePages } from '../config/site';
+import archer from '../assets/archer-travel.webp';
+import evolution from '../assets/evolution-travel.webp';
+---
+<footer class="site-footer"><div class="container footer-inner">
+  <Brand />
+  <div class="partners" role="group" aria-label="Archer Travel y Evolution Travel">
+    <div class="partner-mark"><Image src={archer} alt="Archer Travel Services" class="partner-archer" loading="lazy" /></div>
+    <div class="partner-mark"><Image src={evolution} alt="Evolution Travel" class="partner-evolution" loading="lazy" /></div>
+  </div>
+  <ul class="legal-links" aria-label="Información legal">
+    {futurePages.legal.map(({ label, href }) => <li>{href ? <a href={href}>{label}</a> : <span>{label}</span>}</li>)}
+  </ul>
+</div></footer>

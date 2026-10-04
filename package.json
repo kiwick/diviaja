@@ -11,13 +11,18 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "prepare:images": "node scripts/prepare-images.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/dm-sans": "5.3.0",
+    "@fontsource/caveat": "5.3.0",
+    "@fontsource/libre-caslon-display": "5.3.0",
     "astro": "7.3.5"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "sharp": "0.35.5",
     "typescript": "6.0.3"
   }
 }

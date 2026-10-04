@@ -1,0 +1,30 @@
+---
+import { getImage } from 'astro:assets';
+import perhentian from '../../design/source-images/perhentian-aerea.webp';
+import displayFont from '@fontsource/libre-caslon-display/files/libre-caslon-display-latin-400-normal.woff2?url';
+import dmSans from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
+import '../styles/global.css';
+import { sitePath } from '../config/site';
+interface Props { title?: string; description?: string; path?: string; noindex?: boolean; }
+const { title = 'Diviaja · Viajes con Diana | Tú me cuentas. Yo me encargo.', description = 'Soy Diana. Te ayudo a organizar tu viaje, una escapada o solo una parte: vuelos, hoteles, traslados y entradas. Cuéntame qué tienes en mente.', path = '', noindex = false } = Astro.props;
+const canonical = new URL(sitePath(path), Astro.site);
+const social = await getImage({ src: perhentian, width: 1200, height: 630, format: 'jpg', fit: 'cover' });
+const socialUrl = new URL(social.src, Astro.site);
+// Only website identity and visible information; no unverified business data.
+const structuredData = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Diviaja', alternateName: 'Diviaja · Viajes con Diana', url: new URL(sitePath(), Astro.site).href, inLanguage: 'es' };
+---
+<!doctype html><html lang="es"><head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title><meta name="description" content={description} /><link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
+  <meta name="theme-color" content="#103d34" />
+  <meta property="og:type" content="website" /><meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Diviaja" /><meta property="og:title" content={title} />
+  <meta property="og:description" content={description} /><meta property="og:url" content={canonical} />
+  <meta property="og:image" content={socialUrl} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Vista aérea de la costa y el agua turquesa de Perhentian" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={dmSans} as="font" type="font/woff2" crossorigin />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')} />
+</head><body><a class="skip-link" href="#contenido">Saltar al contenido</a><slot /></body></html>

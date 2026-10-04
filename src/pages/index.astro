@@ -1,13 +1,92 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Diviaja — En preparación</title>
-  </head>
-  <body>
-    <main>
-      <h1>Diviaja — En preparación</h1>
-    </main>
-  </body>
-</html>
+---
+import { Image } from 'astro:assets';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import ContactButton from '../components/ContactButton.astro';
+import Icon from '../components/Icon.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ExperiencesCollage from '../components/ExperiencesCollage.astro';
+import { contact, futurePages } from '../config/site';
+import london from '../../design/fotos-reales-v3/londres-tower-bridge-retocada.png';
+import terraces from '../assets/terrazas-arroz.webp';
+import town from '../assets/escapada-europea.webp';
+import family from '../assets/viaje-familia.webp';
+import beach from '../../design/fotos-reales-v3/perhentian-playa-retocada.png';
+import perhentian from '../../design/source-images/perhentian-aerea.webp';
+import diana from '../../design/source-images/diana-borneo.webp';
+import borneo from '../../design/source-images/borneo-apoyo.webp';
+import marrakech from '../../design/source-images/marrakech-apoyo.webp';
+import sweden from '../../design/source-images/suecia-apoyo.webp';
+const plans = [
+  { title: 'Una escapada', text: 'Hotel, vuelos y algún plan. Aunque solo tengas unos días.', image: town, alt: 'Escena ilustrativa de una calle europea con terrazas y flores' },
+  { title: 'Un viaje en familia', text: 'Disney, Londres o donde os apetezca. Con los tiempos y detalles que necesitáis.', image: family, alt: 'Escena ilustrativa de una familia ante un castillo de un parque temático' },
+  { title: 'Un viaje más lejos', text: 'Ruta, alojamientos y traslados. Todo coordinado para que puedas disfrutar.', image: beach, alt: 'Playa de Perhentian, Malasia, con vegetación tropical y agua turquesa' },
+];
+const experience = [
+  { name: 'Malasia', image: borneo, alt: 'Vegetación tropical como inspiración para Malasia' },
+  { name: 'Marruecos', image: marrakech, alt: 'Una plaza al anochecer con puestos iluminados y personas, como inspiración para Marruecos' },
+  { name: 'Países Nórdicos', image: sweden, alt: 'Árboles cubiertos de nieve como inspiración para los Países Nórdicos' },
+];
+const contactHref = futurePages.contact ?? `mailto:${contact.email}`;
+// Account for the source area cropped by object-fit: cover when selecting pixels.
+const londonSizes = '(min-width: 1248px) 596.4px, (min-width: 900px) calc((100vw - 112px) * .525), (min-width: 760px) calc((100vw - 96px) / 2), (min-width: 600px) calc(100vw - 64px), calc(100vw - 40px)';
+const beachSizes = '(min-width: 1248px) 454.4px, (min-width: 700px) calc((100vw - 112px) * .4), (min-width: 500px) 213.75px, calc((100vw - 40px) * 1.125)';
+---
+<SiteLayout>
+  <SiteHeader />
+  <main id="contenido" tabindex="-1">
+    <section class="container hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Tu viaje empieza cuando lo imaginas.</h1>
+        <p class="intro">Soy Diana. Una idea, una escapada pendiente, un lugar que siempre has querido conocer. Cuéntame qué tienes en mente y le damos forma, con opciones que encajen contigo y cada detalle bien cuidado.</p>
+        <ContactButton label="Cuéntame qué tienes en mente" arrow />
+        <p class="handwritten hero-note">Empezamos por tu idea.</p>
+      </div>
+      <div class="hero-mosaic">
+        <Image src={london} alt="Tower Bridge sobre el Támesis, en Londres" format="webp" quality={82} widths={[320, 480, 640, 960, 1280, 1440]} sizes={londonSizes} class="hero-main-image" loading="eager" fetchpriority="high" />
+        <Image src={perhentian} alt="Fotografía aérea de Perhentian: costa verde, barcas y agua turquesa" widths={[320, 640, 960]} sizes="(min-width: 900px) 24vw, (min-width: 600px) 40vw, 45vw" class="hero-island" loading="eager" />
+        <Image src={terraces} alt="Escena ilustrativa de terrazas de arroz, inspiración para Filipinas" widths={[256, 512]} sizes="(min-width: 900px) 24vw, (min-width: 600px) 40vw, 45vw" class="hero-terraces" loading="eager" />
+      </div>
+    </section>
+    <section class="container plans section-space" aria-labelledby="plans-title">
+      <div class="section-heading"><h2 id="plans-title">No todos los planes necesitan lo mismo.</h2><p>Puedo ayudarte con el viaje completo o con una parte. Lo vemos juntos.</p></div>
+      <div class="plans-grid">{plans.map((plan) => <article class="plan">
+        <Image src={plan.image} alt={plan.alt} format="webp" quality={plan.image === beach ? 82 : undefined} widths={plan.image === beach ? [320, 480, 640, 960, 1200] : [320, 512]} sizes={plan.image === beach ? beachSizes : '(min-width: 1200px) 379px, (min-width: 700px) 30vw, (min-width: 500px) 190px, calc(100vw - 40px)'} loading="lazy" />
+        <div class="plan-copy"><h3>{plan.title}</h3><p>{plan.text}</p></div>
+      </article>)}</div>
+    </section>
+    <section class="tickets-band" aria-labelledby="tickets-title"><div class="container tickets-inner">
+      <div class="tickets-copy">
+        <p class="tickets-eyebrow">ENTRADAS Y EXPERIENCIAS</p>
+        <h2 id="tickets-title">Y si solo necesitas unas entradas, también.</h2>
+        <p class="tickets-description">Cuéntame el plan. Te ayudo a buscar opciones y a organizar lo que haga falta.</p>
+        <p class="tickets-examples">Harry Potter · Universal Orlando · Magic Kingdom · Fórmula 1 · MotoGP</p>
+      </div>
+      <ExperiencesCollage />
+    </div></section>
+    <section class="container about section-space" aria-labelledby="diana-title">
+      <div class="diana-portrait"><Image src={diana} alt="Diana a bordo de una barca en Borneo al atardecer" widths={[400, 720, 1079]} sizes="(min-width: 1200px) 500px, (min-width: 700px) 43vw, calc(100vw - 40px)" class="diana-image" loading="lazy" /></div>
+      <div class="about-copy"><h2 id="diana-title">Hola, soy Diana.</h2>
+        <p>Soy agente de viajes independiente certificada y trabajo mediante Archer Travel Services. Escucho lo que buscas, comparo opciones y te ayudo a decidir.</p><p>No te preocupes. Me encargo.</p>
+        <div class="remuneration"><h3>Te ayudo a organizarlo. Sin que pagues más.</h3><p>En las reservas por las que recibo una comisión del proveedor, mi ayuda no añade ningún coste a tu precio. Si alguna gestión tiene un coste aparte, te lo explicaré antes de que decidas.</p></div>
+      </div>
+    </section>
+    <section class="container experience section-space" aria-labelledby="experience-title">
+      <div class="section-heading"><h2 id="experience-title">Hay lugares que conozco de cerca.</h2></div>
+      <div class="experience-grid">{experience.map((place) => <figure>
+        <Image src={place.image} alt={place.alt} widths={[320, 640, 960]} sizes="(min-width: 1200px) 379px, (min-width: 600px) 30vw, calc(100vw - 40px)" loading="lazy" /><figcaption>{place.name}</figcaption>
+      </figure>)}</div>
+      <p class="other-destinations">Y muchos otros destinos</p><p>Mi experiencia suma. Tu viaje puede llevarte a cualquier lugar.</p>
+    </section>
+    <section class="contact-section" aria-labelledby="contact-title"><div class="container contact-inner">
+      <div class="contact-copy"><h2 id="contact-title">¿Qué tienes en mente?</h2><p>Un destino, unas fechas o una idea a medias. Cuéntamelo y empezamos por ahí.</p></div>
+      <div class="contact-actions">
+        <ContactButton label="Cuéntamelo por WhatsApp" light />
+        <a class="secondary-contact" href={contactHref}>Prefiero contártelo con calma <Icon name="arrow" /></a>
+        <p class="email-hint">Por email: <a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+        <a class="phone-link" href={`tel:${contact.phone}`}><Icon name="phone" /> {contact.phoneLabel}</a>
+      </div><p class="handwritten signature">Diana</p>
+    </div></section>
+  </main>
+  <SiteFooter />
+</SiteLayout>
