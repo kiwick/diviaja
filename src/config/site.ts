@@ -5,5 +5,5 @@ export const sitePath = (path = '') => `${import.meta.env.BASE_URL.replace(/\/$/
 // Add routes only after their pages have been implemented.
 export const futurePages: { contact?: string; legal: { label: string; href?: string }[] } = {
   contact: sitePath('cuentame-tu-plan'),
-  legal: [{ label: 'Aviso legal' }, { label: 'Privacidad', href: sitePath('privacidad') }, { label: 'Cookies' }],
+  legal: [{ label: 'Aviso legal', href: sitePath('aviso-legal') }, { label: 'Privacidad', href: sitePath('privacidad') }, { label: 'Cookies', href: sitePath('cookies') }],
 };
