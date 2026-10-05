@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import BusinessActions from '../components/BusinessActions.astro';
+import Icon from '../components/Icon.astro';
+import traveler from '../assets/empresa-viajera.webp';
+import hotel from '../assets/empresa-hotel.webp';
+import '../styles/business.css';
+const services = [
+  { icon: 'plane' as const, title: 'Billetes y conexiones', text: 'Vuelos y trenes que encajen con horarios y reuniones.' },
+  { icon: 'bed' as const, title: 'Hoteles bien ubicados', text: 'Alojamiento según destino, agenda y presupuesto.' },
+  { icon: 'car' as const, title: 'Traslados e itinerario', text: 'Desplazamientos y reservas organizados en un mismo plan.' },
+];
+const steps = [
+  { title: 'Lo que necesita tu equipo', text: 'Destino, fechas, personas, horarios y presupuesto. Empezamos por lo que importa para vuestro viaje.' },
+  { title: 'Opciones que encajan', text: 'Te ayudo a comparar billetes, alojamientos y traslados según vuestra agenda.' },
+  { title: 'Un itinerario claro', text: 'Reservas y desplazamientos organizados para que cada persona sepa dónde ir y cuándo.' },
+];
+---
+<SiteLayout title="Viajes de empresa y de trabajo | Diviaja" description="Diana te ayuda a organizar viajes de empresa: billetes, hoteles y traslados coordinados con la agenda y el presupuesto de tu equipo." path="viajes-de-empresa">
+  <SiteHeader />
+  <main id="contenido" tabindex="-1">
+    <section class="container business-hero" aria-labelledby="business-title">
+      <div class="business-copy"><p class="business-eyebrow">PARA TU EMPRESA</p>
+        <h1 id="business-title">Viajes de trabajo, bien organizados.</h1>
+        <p class="business-intro">Billetes, hoteles y desplazamientos coordinados con la agenda de tu equipo. Te ayudo a organizar cada viaje para que podáis centraros en vuestro trabajo.</p>
+        <BusinessActions />
+      </div>
+      <div class="business-collage">
+        <Image src={traveler} alt="Viajera de negocios con maleta en una terminal de aeropuerto" widths={[400, 640, 960, 1400]} sizes="(min-width: 1248px) 540px, (min-width: 768px) 44vw, calc(100vw - 60px)" class="business-traveler" loading="eager" fetchpriority="high" />
+        <Image src={hotel} alt="Recepción y zona de descanso de un hotel" widths={[240, 400, 640]} sizes="(min-width: 1248px) 250px, (min-width: 768px) 22vw, 40vw" class="business-hotel" loading="eager" />
+      </div>
+    </section>
+    <section class="container business-services" aria-label="Servicios para el viaje de tu empresa">{services.map(service => <article><span class="business-service-icon"><Icon name={service.icon} /></span><div><h2>{service.title}</h2><p>{service.text}</p></div></article>)}</section>
+    <section class="business-process" aria-labelledby="process-title"><div class="container">
+      <p class="business-eyebrow">ASÍ LO ORGANIZAMOS</p><h2 id="process-title">Del primer plan a tenerlo todo previsto.</h2>
+      <ol class="business-steps">{steps.map((step, i) => <li><span class="business-step-number">0{i + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
+    </div></section>
+    <section class="container business-recurring" aria-labelledby="recurring-title">
+      <div class="business-recurring-copy"><h2 id="recurring-title"><span>Para ese viaje puntual.</span> <span>Y para los que se repiten.</span></h2><p>Una visita a un cliente, una feria, una reunión o varios viajes a lo largo del año. Te ayudo a organizar cada desplazamiento con atención a los detalles.</p></div>
+      <ul class="business-categories"><li>Reuniones y visitas</li><li>Ferias y congresos</li><li>Viajes de equipo</li></ul>
+    </section>
+    <section class="business-close" aria-labelledby="business-close-title"><div class="container"><h2 id="business-close-title">Tu próxima reunión empieza con un viaje bien organizado.</h2><BusinessActions /></div></section>
+  </main>
+  <SiteFooter />
+</SiteLayout>

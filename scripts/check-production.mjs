@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 const root = new URL('../dist/', import.meta.url);
-const pages = ['', 'cuentame-tu-plan/', 'gracias/', 'aviso-legal/', 'privacidad/', 'cookies/'];
+const pages = ['', 'viajes-de-empresa/', 'cuentame-tu-plan/', 'gracias/', 'aviso-legal/', 'privacidad/', 'cookies/'];
 for (const path of pages) {
   const html = await readFile(new URL(`${path}index.html`, root), 'utf8');
   assert(!html.includes('kiwick.github.io') && !html.includes('/diviaja/'), `Old URL in ${path}`);
@@ -17,6 +17,7 @@ for (const path of pages) {
     await access(new URL(`.${resource}${resource.endsWith('/') ? 'index.html' : ''}`, root));
   }
   if (path === 'cuentame-tu-plan/') {
+    assert(html.includes('<option>Viaje de empresa</option>'));
     assert(html.includes('action="https://formsubmit.co/diana@dicreativa.com"'));
     assert(html.includes('value="https://diviaja.com/gracias/"'));
     assert(html.includes('name="Preferencia de contacto"'));
@@ -31,6 +32,7 @@ for (const path of pages) {
 const sitemap = await readFile(new URL('sitemap.xml', root), 'utf8');
 assert(sitemap.includes('<loc>https://diviaja.com/</loc>'));
 assert(sitemap.includes('<loc>https://diviaja.com/cuentame-tu-plan/</loc>'));
+assert(sitemap.includes('<loc>https://diviaja.com/viajes-de-empresa/</loc>'));
 assert(['gracias', 'privacidad', 'aviso-legal', 'cookies'].every(path => !sitemap.includes(path)));
 assert((await readFile(new URL('robots.txt', root), 'utf8')).includes('Sitemap: https://diviaja.com/sitemap.xml'));
 assert.equal((await readFile(new URL('CNAME', root), 'utf8')).trim(), 'diviaja.com');

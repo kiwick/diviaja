@@ -2,6 +2,6 @@ import type { APIRoute } from 'astro';
 import { sitePath } from '../config/site';
 // Only indexable pages; confirmation and unfinished legal information stay out.
 export const GET: APIRoute = ({ site }) => new Response(
-  `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${['', 'cuentame-tu-plan'].map(path => `<url><loc>${new URL(sitePath(path), site).href}</loc></url>`).join('')}</urlset>`,
+  `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${['', 'cuentame-tu-plan', 'viajes-de-empresa'].map(path => `<url><loc>${new URL(sitePath(path), site).href}</loc></url>`).join('')}</urlset>`,
   { headers: { 'Content-Type': 'application/xml; charset=utf-8' } },
 );

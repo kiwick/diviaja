@@ -1,0 +1,54 @@
+.business-eyebrow { color: var(--accent); font-size: .75rem; font-weight: 600; letter-spacing: .18em; margin-bottom: 18px; }
+.business-hero, .business-home { display: grid; align-items: center; gap: var(--space-4); padding-block: var(--space-5); }
+.business-copy { min-width: 0; }
+.business-intro, .business-home-copy > p:not(.business-eyebrow) { margin-top: 20px; max-width: 48ch; font-size: 1.08rem; }
+.business-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 24px; }
+.business-whatsapp { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: .93rem; }
+.business-collage { position: relative; padding: 0 8% 24px 0; min-width: 0; }
+.business-traveler { aspect-ratio: 1.16; object-fit: cover; object-position: 52% 50%; border-radius: 8px; }
+.business-hotel { position: absolute; width: 43%; height: auto; aspect-ratio: 1.12; object-fit: cover; bottom: 0; right: 0; border: 4px solid var(--paper); border-radius: 8px; }
+.business-services { display: grid; gap: 24px; padding-block: 28px 40px; border-top: 1px solid var(--line); }
+.business-services article { display: flex; align-items: flex-start; gap: 16px; }
+.business-services h2 { font-size: 1.7rem; }
+.business-services p { margin-top: 8px; font-size: .95rem; }
+.business-service-icon { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; flex-shrink: 0; border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; }
+.business-service-icon svg { width: 28px; height: 28px; }
+.business-process { padding-block: var(--space-5); background: var(--green); color: var(--paper); }
+.business-process .business-eyebrow, .business-step-number { color: #f8cf8b; }
+.business-process h2, .business-process h3 { color: var(--paper); }
+.business-process h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
+.business-steps { display: grid; gap: 24px; list-style: none; margin: 32px 0 0; padding: 0; }
+.business-steps h3 { margin-top: 8px; }
+.business-steps p { margin-top: 12px; }
+.business-step-number { font-weight: 600; }
+.business-recurring { padding-block: var(--space-5) var(--space-4); }
+.business-recurring-copy { display: grid; align-items: center; gap: 24px; }
+.business-recurring-copy h2 { font-size: clamp(2.2rem, 3.4vw, 3rem); }
+.business-categories { display: grid; list-style: none; padding: 24px 0 0; margin: 32px 0 0; border-top: 1px solid var(--line); gap: 24px; color: var(--ink); text-align: center; font-family: var(--font-display); font-size: 1.6rem; line-height: 1.25; }
+.business-categories li::after { content: ''; display: block; width: 48px; height: 1px; background: var(--accent); margin: 16px auto 0; }
+.business-close { background: var(--sand); padding-block: 32px; }
+.business-close > .container { display: grid; align-items: center; gap: 24px; }
+.business-close .business-actions { margin-top: 0; }
+.business-home { border-block: 1px solid var(--line); }
+.business-home h2 span, .business-recurring-copy h2 span { display: block; }
+.business-home h2 { font-size: clamp(2.2rem, 3.4vw, 3rem); }
+.business-home-photo { aspect-ratio: 1.45; object-fit: cover; object-position: 52% 50%; border-radius: 8px; }
+@media (min-width: 768px) {
+  .business-hero, .business-home { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+  .business-services, .business-steps, .business-categories { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .business-services article + article, .business-steps li + li, .business-categories li + li { border-left: 1px solid var(--line); padding-left: 24px; }
+  .business-services article { gap: 12px; }
+  .business-services h2 { font-size: clamp(1.4rem, 2vw, 1.8rem); }
+  .business-service-icon { width: 44px; height: 44px; }
+  .business-steps li + li { border-color: #769188; }
+  .business-recurring-copy { grid-template-columns: 1.1fr 1fr; gap: 40px; }
+  .business-recurring-copy > p { padding-left: 32px; border-left: 1px solid var(--line); }
+  .business-close > .container { grid-template-columns: 1.3fr 1fr; gap: 48px; }
+  .business-close .business-actions { justify-self: end; }
+}
+@media (max-width: 767px) {
+  .business-actions { align-items: stretch; }
+  .business-whatsapp { justify-content: center; }
+  .business-services article + article { border-top: 1px solid var(--line); padding-top: 24px; }
+  .business-steps li + li { border-top: 1px solid #769188; padding-top: 24px; }
+}

@@ -43,3 +43,14 @@ Codex generará archivos de imagen independientes a partir de las seis celdas, m
 Usar imágenes HTML reales con alt pertinente y dimensiones/reserva de espacio, en lugar de sprites de fondos para fotografías de contenido. Preparar versiones responsive cuando aporten valor. No modificar fotografías reales para inventar escenas, no reemplazar personas y no inventar experiencias de Diana.
 
 Conservar el material fuente en design/. Publicar únicamente los recursos necesarios mediante la estructura Astro que decida Codex. No copiar docs/ ni los bocetos a public/ por defecto.
+
+## Viajes de empresa — 5 de octubre de 2026
+
+Fotografías independientes descargadas y convertidas a WebP local; Astro genera tamaños responsive. Los bocetos se usan únicamente como referencia de composición.
+
+| Archivo | Autor y procedencia | Licencia verificada | Uso |
+| --- | --- | --- | --- |
+| `src/assets/empresa-viajera.webp` | [Gustavo Fring, Pexels, foto 4173214](https://www.pexels.com/photo/stylish-woman-with-suitcase-walking-in-airport-4173214/) | [Pexels License](https://www.pexels.com/license/): uso comercial y modificación permitidos, sin atribución obligatoria. | Viajera de negocios en aeropuerto; representa una viajera, no a Diana ni una recomendación de Diviaja por la modelo. Home y presentación de empresas. Fuente descargada: 1600 × 1067 px; WebP: 1400 × 934 px. |
+| `src/assets/empresa-hotel.webp` | [Tim Photoguy, Unsplash, FPS7a7XQZ0w](https://unsplash.com/photos/empty-hotel-lobby-FPS7a7XQZ0w) | [Unsplash License](https://unsplash.com/license): uso comercial y modificación permitidos, sin atribución obligatoria. | Recepción de hotel como ejemplo visual; no se promete un hotel concreto. Fuente y WebP: 1000 × 667 px. |
+
+Se preservan las restricciones de ambas licencias sobre redistribución de stock y uso de personas o marcas para sugerir respaldo comercial.
