@@ -31,7 +31,7 @@ const next = new URL(sitePath('gracias'), Astro.site).href;
           <div class="form-field"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
           <div class="form-field"><label for="phone">Teléfono <span id="phone-requirement" aria-live="polite">(opcional)</span></label><input id="phone" name="Teléfono" type="tel" autocomplete="tel" /></div>
           <div class="form-field"><label for="contact-preference">Cómo prefieres que contacte contigo? *</label><select id="contact-preference" name="Preferencia de contacto" required><option value="">Selecciona una opción</option><option>Email</option><option>WhatsApp</option><option>Teléfono</option></select></div>
-          <div class="form-field full-row"><label for="plan">Qué te gustaría organizar?</label><select id="plan" name="Tipo de plan"><option value="">Selecciona una opción</option><option>Viaje</option><option>Escapada</option><option>Viaje en familia</option><option>Entradas o experiencias</option><option>Otro</option></select></div>
+          <div class="form-field full-row"><label for="plan">Qué te gustaría organizar?</label><select id="plan" name="Tipo de plan"><option value="">Selecciona una opción</option><option>Viaje</option><option>Escapada</option><option>Viaje en familia</option><option>Viaje de empresa</option><option>Entradas o experiencias</option><option>Otro</option></select></div>
           <div class="form-field full-row"><label for="destination">Destino o experiencia (opcional)</label><input id="destination" name="Destino o experiencia" placeholder="Un lugar, unas entradas… o todavía no lo sé" /></div>
           <div class="form-field"><label for="dates">Fechas aproximadas (opcional)</label><input id="dates" name="Fechas aproximadas" /></div>
           <div class="form-field"><label for="travelers">Número de viajeros (opcional)</label><input id="travelers" name="Número de viajeros" type="number" min="1" step="1" inputmode="numeric" /></div>
@@ -48,6 +48,10 @@ const next = new URL(sitePath('gracias'), Astro.site).href;
   <SiteFooter />
 </SiteLayout>
 <script>
+  const plan = document.querySelector<HTMLSelectElement>('#plan');
+  if (plan && new URLSearchParams(window.location.search).get('plan') === 'empresa') {
+    plan.value = 'Viaje de empresa';
+  }
   const form = document.querySelector<HTMLFormElement>('.plan-form');
   const preference = document.querySelector<HTMLSelectElement>('#contact-preference');
   const phone = document.querySelector<HTMLInputElement>('#phone');

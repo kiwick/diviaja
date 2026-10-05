@@ -1,0 +1,8 @@
+---
+import Icon from './Icon.astro';
+import { businessFormHref, businessWhatsappHref } from '../config/site';
+---
+<div class="business-actions">
+  <a class="button" href={businessFormHref}>Qué necesita tu empresa <Icon name="arrow" /></a>
+  <a class="business-whatsapp" href={businessWhatsappHref}><Icon name="whatsapp" />Prefiero hablar por WhatsApp</a>
+</div>

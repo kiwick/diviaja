@@ -6,7 +6,9 @@ import ContactButton from '../components/ContactButton.astro';
 import Icon from '../components/Icon.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ExperiencesCollage from '../components/ExperiencesCollage.astro';
-import { contact, futurePages } from '../config/site';
+import { contact, futurePages, sitePath, businessWhatsappHref } from '../config/site';
+import traveler from '../assets/empresa-viajera.webp';
+import '../styles/business.css';
 import london from '../../design/fotos-reales-v3/londres-tower-bridge-retocada.png';
 import terraces from '../assets/terrazas-arroz.webp';
 import town from '../assets/escapada-europea.webp';
@@ -56,6 +58,14 @@ const beachSizes = '(min-width: 1248px) 454.4px, (min-width: 700px) calc((100vw 
       </div>
       <ExperiencesCollage />
     </div></section>
+    <section class="container business-home" aria-labelledby="business-home-title">
+      <div class="business-home-copy"><p class="business-eyebrow">TAMBIÉN PARA TU EMPRESA</p>
+        <h2 id="business-home-title"><span>Tu equipo viaja.</span> <span>Diana lo organiza.</span></h2>
+        <p>Billetes, hoteles y traslados para reuniones, ferias y viajes de trabajo. Una persona de contacto para coordinar los detalles.</p>
+        <div class="business-actions"><a class="button" href={sitePath('viajes-de-empresa')}>Ver viajes de empresa <Icon name="arrow" /></a><a class="business-whatsapp" href={businessWhatsappHref}><Icon name="whatsapp" />Prefiero hablar por WhatsApp</a></div>
+      </div>
+      <Image src={traveler} alt="Viajera de negocios con maleta en una terminal de aeropuerto" widths={[400, 640, 960, 1400]} sizes="(min-width: 1248px) 572px, (min-width: 768px) 46vw, calc(100vw - 40px)" class="business-home-photo" loading="lazy" />
+    </section>
     <section class="container about section-space" aria-labelledby="diana-title">
       <div class="diana-portrait"><Image src={diana} alt="Diana a bordo de una barca en Borneo al atardecer" widths={[400, 720, 1079]} sizes="(min-width: 1200px) 500px, (min-width: 700px) 43vw, calc(100vw - 40px)" class="diana-image" loading="lazy" /></div>
       <div class="about-copy"><h2 id="diana-title">Hola, soy Diana.</h2>
