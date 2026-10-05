@@ -39,6 +39,6 @@ Los textos legales deben reflejar la operativa real y dejar identificados los da
 
 ## Datos de contacto utilizados hasta ahora
 
-WhatsApp y teléfono: +34 660 590 686. Email: diana@dicreativa.com. Son los datos de las versiones anteriores, no se han vuelto a validar en este paquete. Confirmarlos antes de publicar. Centralizar esos valores en la implementación para evitar inconsistencias.
+WhatsApp y teléfono: +34 660 590 686. Email: diana@diviaja.com, indicado por la titular como destinatario actual. Los datos están centralizados en `src/config/site.ts` para páginas, enlaces de correo y formulario. Cambiar el destinatario de FormSubmit requiere una activación independiente; interceptar el POST no acredita la recepción de correo.
 
 Dominio objetivo: diviaja.com. La base técnica actual utiliza la dirección de proyecto kiwick.github.io/diviaja. La transición de dominio y base se hará en la tarea de despliegue, no durante el inventario de recursos.

@@ -101,6 +101,11 @@ No incluye frameworks de interfaz, Tailwind, CMS, backend ni analítica.
 El formulario usa FormSubmit, mantiene reCAPTCHA y permite elegir Email,
 WhatsApp o Teléfono. Un script mínimo valida la obligatoriedad condicional del
 número. El correo directo y los CTA de WhatsApp se conservan.
+El correo compartido es `diana@diviaja.com`, definido en `src/config/site.ts`.
+El destinatario de FormSubmit necesita su propia activación: realizar un envío
+manual, confirmar el enlace recibido en esa cuenta y comprobar después una
+consulta real. Las comprobaciones interceptan el POST y no envían emails;
+no demuestran que el destinatario esté activado ni que reciba los mensajes.
 La privacidad conserva marcadores legales pendientes y noindex; debe completarse.
 
 ## Publicación
