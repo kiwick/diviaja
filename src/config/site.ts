@@ -1,5 +1,5 @@
-// Supplied contact details: confirm with Diana before publishing.
-export const contact = { name: 'Diana', phone: '+34660590686', phoneLabel: '660 590 686', email: 'diana@dicreativa.com' };
+// Shared contact details for pages, legal notices and the form recipient.
+export const contact = { name: 'Diana', phone: '+34660590686', phoneLabel: '660 590 686', email: 'diana@diviaja.com' };
 export const whatsappHref = `https://wa.me/${contact.phone.replace('+', '')}`;
 export const businessWhatsappHref = `${whatsappHref}?text=${encodeURIComponent('Hola Diana, necesito ayuda para organizar un viaje de empresa.')}`;
 export const sitePath = (path = '') => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\/+|\/+$/g, '')}${path ? '/' : ''}`;

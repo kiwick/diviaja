@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 const root = new URL('../dist/', import.meta.url);
 const pages = ['', 'viajes-de-empresa/', 'cuentame-tu-plan/', 'gracias/', 'aviso-legal/', 'privacidad/', 'cookies/'];
+const contactEmail = 'diana@diviaja.com';
 for (const path of pages) {
   const html = await readFile(new URL(`${path}index.html`, root), 'utf8');
   assert(!html.includes('kiwick.github.io') && !html.includes('/diviaja/'), `Old URL in ${path}`);
@@ -12,13 +13,19 @@ for (const path of pages) {
   assert.equal((html.match(/<h1[ >]/g) ?? []).length, 1);
   const noindex = /name="robots" content="noindex, follow"/.test(html);
   assert.equal(noindex, ['gracias/', 'aviso-legal/', 'privacidad/', 'cookies/'].includes(path));
+  for (const match of html.matchAll(/href="mailto:([^"]+)"/g)) {
+    assert.equal(decodeURIComponent(match[1]), contactEmail, `Unexpected contact email in ${path}`);
+  }
+  if (['', 'aviso-legal/', 'privacidad/', 'cookies/'].includes(path)) {
+    assert(html.includes(`href="mailto:${contactEmail}"`), `Contact email missing in ${path}`);
+  }
   for (const match of html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)) {
     const resource = match[1].split('?')[0];
     await access(new URL(`.${resource}${resource.endsWith('/') ? 'index.html' : ''}`, root));
   }
   if (path === 'cuentame-tu-plan/') {
     assert(html.includes('<option>Viaje de empresa</option>'));
-    assert(html.includes('action="https://formsubmit.co/diana@dicreativa.com"'));
+    assert(html.includes(`action="https://formsubmit.co/${contactEmail}"`));
     assert(html.includes('value="https://diviaja.com/gracias/"'));
     assert(html.includes('name="Preferencia de contacto"'));
     assert(html.includes('name="_honey"'));
