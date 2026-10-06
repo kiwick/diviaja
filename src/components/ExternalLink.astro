@@ -1,0 +1,6 @@
+---
+interface Props { href: string; rel?: string; }
+const { href, rel = '' } = Astro.props;
+const safeRel = [...new Set([...rel.split(/\s+/).filter(Boolean), 'noopener', 'noreferrer'])].join(' ');
+---
+<a href={href} target="_blank" rel={safeRel}><slot /><span class="visually-hidden"> (se abre en otra pestaña)</span></a>
