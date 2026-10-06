@@ -7,7 +7,7 @@ import Icon from '../components/Icon.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ExperiencesCollage from '../components/ExperiencesCollage.astro';
 import { contact, futurePages, sitePath, businessWhatsappHref } from '../config/site';
-import '../styles/business.css';
+import '../styles/business-home.css';
 import london from '../../design/fotos-reales-v3/londres-tower-bridge-retocada.png';
 import terraces from '../assets/terrazas-arroz.webp';
 import town from '../assets/escapada-europea.webp';
@@ -24,6 +24,10 @@ const contactHref = futurePages.contact ?? `mailto:${contact.email}`;
 // Account for the source area cropped by object-fit: cover when selecting pixels.
 const londonSizes = '(min-width: 1248px) 596.4px, (min-width: 900px) calc((100vw - 112px) * .525), (min-width: 760px) calc((100vw - 96px) / 2), (min-width: 600px) calc(100vw - 64px), calc(100vw - 40px)';
 const beachSizes = '(min-width: 1248px) 454.4px, (min-width: 700px) calc((100vw - 112px) * .4), (min-width: 500px) 213.75px, calc((100vw - 40px) * 1.125)';
+const halfHeroSizes = '(min-width: 1248px) 294.2px, (min-width: 900px) calc((100vw - 112px) * .2625 - 4px), (min-width: 760px) calc((100vw - 96px) / 4 - 4px), (min-width: 600px) calc((100vw - 72px) / 2), calc((100vw - 48px) / 2)';
+const islandSizes = `(min-width: 1248px) 328.3px, (min-width: 900px) calc(((100vw - 112px) * .2625 - 4px) * 1.11587), ${halfHeroSizes}`;
+const planSizes = '(min-width: 1248px) 378.67px, (min-width: 700px) calc((100vw - 112px) / 3), (min-width: 500px) 190px, calc(100vw - 40px)';
+const portraitSizes = '(min-width: 1248px) 500px, (min-width: 900px) calc((100vw - 128px) * .446429), (min-width: 700px) calc((100vw - 112px) * .45), (min-width: 600px) calc(100vw - 64px), calc(100vw - 40px)';
 ---
 <SiteLayout>
   <SiteHeader />
@@ -36,15 +40,15 @@ const beachSizes = '(min-width: 1248px) 454.4px, (min-width: 700px) calc((100vw 
         <p class="handwritten hero-note">Empezamos por tu idea.</p>
       </div>
       <div class="hero-mosaic">
-        <Image src={london} alt="Tower Bridge sobre el Támesis, en Londres" format="webp" quality={82} widths={[320, 480, 640, 960, 1280, 1440]} sizes={londonSizes} class="hero-main-image" loading="eager" fetchpriority="high" />
-        <Image src={perhentian} alt="Fotografía aérea de Perhentian: costa verde, barcas y agua turquesa" widths={[320, 640, 960]} sizes="(min-width: 900px) 24vw, (min-width: 600px) 40vw, 45vw" class="hero-island" loading="eager" />
-        <Image src={terraces} alt="Escena ilustrativa de terrazas de arroz, inspiración para Filipinas" widths={[256, 512]} sizes="(min-width: 900px) 24vw, (min-width: 600px) 40vw, 45vw" class="hero-terraces" loading="eager" />
+        <Image src={london} alt="Tower Bridge sobre el Támesis, en Londres" format="webp" quality={82} widths={[280, 320, 400, 480, 560, 640, 720, 800, 960, 1200, 1440]} sizes={londonSizes} class="hero-main-image" loading="eager" fetchpriority="high" />
+        <Image src={perhentian} alt="Fotografía aérea de Perhentian: costa verde, barcas y agua turquesa" widths={[160, 240, 280, 320, 360, 400, 480, 560, 640, 800, 960, 1200]} sizes={islandSizes} class="hero-island" loading="eager" />
+        <Image src={terraces} alt="Escena ilustrativa de terrazas de arroz, inspiración para Filipinas" widths={[160, 240, 280, 320, 360, 400, 480, 512]} sizes={halfHeroSizes} class="hero-terraces" loading="eager" />
       </div>
     </section>
     <section class="container plans section-space" aria-labelledby="plans-title">
       <div class="section-heading"><h2 id="plans-title">No todos los planes necesitan lo mismo.</h2><p>Puedo ayudarte con el viaje completo o con una parte. Lo vemos juntos.</p></div>
       <div class="plans-grid">{plans.map((plan) => <article class="plan">
-        <Image src={plan.image} alt={plan.alt} format="webp" quality={plan.image === beach ? 82 : undefined} widths={plan.image === beach ? [320, 480, 640, 960, 1200] : [320, 512]} sizes={plan.image === beach ? beachSizes : '(min-width: 1200px) 379px, (min-width: 700px) 30vw, (min-width: 500px) 190px, calc(100vw - 40px)'} loading="lazy" />
+        <Image src={plan.image} alt={plan.alt} format="webp" quality={plan.image === beach ? 82 : undefined} widths={plan.image === beach ? [280, 320, 400, 480, 560, 640, 720, 800, 960, 1200] : [240, 320, 400, 480, 512]} sizes={plan.image === beach ? beachSizes : planSizes} loading="lazy" />
         <div class="plan-copy"><h3>{plan.title}</h3><p>{plan.text}</p></div>
       </article>)}</div>
     </section>
@@ -65,7 +69,7 @@ const beachSizes = '(min-width: 1248px) 454.4px, (min-width: 700px) calc((100vw 
       <div class="business-actions"><a class="button" href={sitePath('viajes-de-empresa')}>Ver viajes de empresa <Icon name="arrow" /></a><a class="business-whatsapp" href={businessWhatsappHref}><Icon name="whatsapp" />Prefiero hablar por WhatsApp</a></div>
     </section>
     <section class="container about section-space" aria-labelledby="diana-title">
-      <div class="diana-portrait"><Image src={diana} alt="Diana a bordo de una barca en Borneo al atardecer" widths={[400, 720, 1079]} sizes="(min-width: 1200px) 500px, (min-width: 700px) 43vw, calc(100vw - 40px)" class="diana-image" loading="lazy" /></div>
+      <div class="diana-portrait"><Image src={diana} alt="Diana a bordo de una barca en Borneo al atardecer" widths={[280, 320, 400, 480, 560, 640, 720, 800, 960, 1079]} sizes={portraitSizes} class="diana-image" loading="lazy" /></div>
       <div class="about-copy"><h2 id="diana-title">Hola, soy Diana.</h2>
         <p>Soy agente de viajes independiente certificada y trabajo para Archer Travel. Disfruto viajando y preparando viajes: escuchar una idea, buscar opciones y cuidar los detalles hasta darle forma.</p>
         <p>Hay muchos lugares que conozco de cerca. Esa experiencia puede sumar mucho a tu viaje, desde elegir dónde alojarte hasta descubrir planes que encajen contigo. Sea un destino que conozca personalmente o uno nuevo, te ayudo a encontrar opciones y a decidir con tranquilidad.</p>

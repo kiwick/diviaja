@@ -1,0 +1,7 @@
+.business-eyebrow { color: var(--accent); font-size: .75rem; font-weight: 600; letter-spacing: .18em; margin-bottom: 18px; }
+.business-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 24px; }
+.business-whatsapp { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: .93rem; }
+@media (max-width: 767px) {
+  .business-actions { align-items: stretch; }
+  .business-whatsapp { justify-content: center; }
+}

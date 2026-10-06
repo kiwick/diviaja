@@ -29,8 +29,8 @@ const steps = [
         <BusinessActions />
       </div>
       <div class="business-collage">
-        <Image src={traveler} alt="Viajera de negocios con maleta en una terminal de aeropuerto" widths={[400, 640, 960, 1400]} sizes="(min-width: 1248px) 540px, (min-width: 768px) 44vw, calc(100vw - 60px)" class="business-traveler" loading="eager" fetchpriority="high" />
-        <Image src={hotel} alt="Recepción y zona de descanso de un hotel" widths={[240, 400, 640]} sizes="(min-width: 1248px) 250px, (min-width: 768px) 22vw, 40vw" class="business-hotel" loading="eager" />
+        <Image src={traveler} alt="Viajera de negocios con maleta en una terminal de aeropuerto" widths={[320, 400, 480, 560, 640, 720, 800, 960, 1200, 1400]} sizes="(min-width: 1248px) 680.48px, (min-width: 768px) calc((100vw - 104px) * .594828), (min-width: 600px) calc((100vw - 64px) * 1.189655), calc((100vw - 40px) * 1.189655)" class="business-traveler" loading="eager" fetchpriority="high" />
+        <Image src={hotel} alt="Recepción y zona de descanso de un hotel" widths={[160, 240, 280, 320, 360, 400, 480, 560, 640, 800]} sizes="(min-width: 1248px) 316.99px, (min-width: 768px) calc(((100vw - 104px) * .215 - 8px) * 1.339286), (min-width: 600px) calc(((100vw - 64px) * .43 - 8px) * 1.339286), calc(((100vw - 40px) * .43 - 8px) * 1.339286)" class="business-hotel" loading="eager" />
       </div>
     </section>
     <section class="container business-services" aria-label="Servicios para el viaje de tu empresa">{services.map(service => <article><span class="business-service-icon"><Icon name={service.icon} /></span><div><h2>{service.title}</h2><p>{service.text}</p></div></article>)}</section>
