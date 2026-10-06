@@ -19,7 +19,7 @@ const next = new URL(sitePath('gracias'), Astro.site).href;
         <p class="plan-lead">Cuéntame qué tienes en mente. No necesitas tenerlo todo decidido.</p>
         <h2>Lo vemos contigo.</h2>
         <p>Un viaje completo, una escapada o solo unas entradas. Empezamos por tu idea.</p>
-        <Image src={london} alt="Tower Bridge sobre el Támesis, en Londres" widths={[480, 720, 960]} sizes="(min-width: 1248px) 426px, 36vw" format="webp" class="plan-photo" />
+        <Image src={london} alt="Tower Bridge sobre el Támesis, en Londres" widths={[360, 400, 480, 560, 640, 720, 800, 960]} sizes="(min-width: 1248px) 429px, (min-width: 1000px) max(355.4px, calc((100vw - 104px) * .375)), 1px" format="webp" class="plan-photo" loading="lazy" />
       </div>
       <form class="plan-form" action={`https://formsubmit.co/${contact.email}`} method="POST" aria-label="Cuéntame tu plan" aria-describedby="required-note service-note">
         <input type="hidden" name="_subject" value="Nueva idea de viaje · Diviaja" />
