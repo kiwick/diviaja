@@ -184,3 +184,5 @@ summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
   .tickets-inner { grid-template-columns: minmax(0, 42fr) minmax(0, 58fr); gap: var(--space-4); }
   .ticket-tile figcaption { font-size: 1.2rem; }
 }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

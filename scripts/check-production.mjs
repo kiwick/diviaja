@@ -32,6 +32,15 @@ for (const path of pages) {
     assert(!html.includes('name="_captcha"') && !html.includes('name="_autoresponse"'));
   }
   if (['aviso-legal/', 'privacidad/', 'cookies/'].includes(path)) {
+    for (const match of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)) {
+      const [, attributes, content] = match;
+      const href = attributes.match(/href="([^"]+)"/)?.[1];
+      if (!href || !/^https?:\/\//.test(href) || new URL(href).hostname === 'diviaja.com') continue;
+      assert(attributes.includes('target="_blank"'), `External link must open a new tab in ${path}: ${href}`);
+      const rel = attributes.match(/rel="([^"]*)"/)?.[1].split(/\s+/) ?? [];
+      assert(rel.includes('noopener') && rel.includes('noreferrer'), `External link protection missing in ${path}: ${href}`);
+      assert(content.includes('class="visually-hidden"') && content.includes('se abre en otra pestaña'), `Accessible new tab notice missing in ${path}: ${href}`);
+    }
     assert(!/PENDIENTE|Información provisional|Información pendiente/.test(html), `Internal notes in ${path}`);
     for (const legalPath of ['aviso-legal', 'privacidad', 'cookies']) assert(html.includes(`href="/${legalPath}/"`));
   }

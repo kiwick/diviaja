@@ -2,10 +2,12 @@
 import Brand from './Brand.astro';
 import ContactButton from './ContactButton.astro';
 import { sitePath } from '../config/site';
+interface Props { externalLinksNewTab?: boolean; }
+const { externalLinksNewTab = false } = Astro.props;
 ---
 <header class="site-header"><div class="container header-inner">
   <Brand />
   <nav class="main-nav" aria-label="Menú principal"><a href={sitePath('viajes-de-empresa')} aria-current={Astro.url.pathname === sitePath('viajes-de-empresa') ? 'page' : undefined}>Empresas</a></nav>
   <details class="mobile-nav"><summary>Menú</summary><nav aria-label="Menú móvil"><a href={sitePath('viajes-de-empresa')} aria-current={Astro.url.pathname === sitePath('viajes-de-empresa') ? 'page' : undefined}>Empresas</a></nav></details>
-  <ContactButton label="Hablemos por WhatsApp" compact />
+  <ContactButton label="Hablemos por WhatsApp" compact newTab={externalLinksNewTab} />
 </div></header>

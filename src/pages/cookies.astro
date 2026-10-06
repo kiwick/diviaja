@@ -1,4 +1,5 @@
 ---
+import ExternalLink from '../components/ExternalLink.astro';
 import LegalLayout from '../layouts/LegalLayout.astro';
 import { contact, sitePath } from '../config/site';
 ---
@@ -10,7 +11,7 @@ import { contact, sitePath } from '../config/site';
   <h2>Al enviar el formulario</h2>
   <p>El formulario se muestra en Diviaja. Al pulsar «Enviar mi idea», los datos se envían al servicio externo FormSubmit, que utiliza reCAPTCHA para proteger el envío frente a usos automatizados. FormSubmit y reCAPTCHA no se cargan al abrir o rellenar el formulario de Diviaja.</p>
   <p>FormSubmit informa de que puede utilizar cookies. Google explica que reCAPTCHA utiliza la cookie <code>_GRECAPTCHA</code> al ejecutarse para analizar el riesgo de un uso automatizado. Esa información corresponde al servicio externo; no es una cookie que Diviaja instale al navegar por sus páginas.</p>
-  <p>Puedes consultar la <a href="https://formsubmit.co/privacy.pdf">información de privacidad de FormSubmit</a> y la <a href="https://developers.google.com/recaptcha/docs/faq#does-recaptcha-use-cookies">documentación de Google sobre las cookies de reCAPTCHA</a>.</p>
+  <p>Puedes consultar la <ExternalLink href="https://formsubmit.co/privacy.pdf">información de privacidad de FormSubmit</ExternalLink> y la <ExternalLink href="https://developers.google.com/recaptcha/docs/faq#does-recaptcha-use-cookies">documentación de Google sobre las cookies de reCAPTCHA</ExternalLink>.</p>
   <h2>Enlaces a servicios externos</h2>
   <p>Los botones de WhatsApp abren ese servicio cuando decides utilizarlos. No hay un chat de WhatsApp integrado que se cargue durante la navegación. Los servicios que visites a través de enlaces tienen sus propias condiciones de privacidad y cookies.</p>
   <h2>Cómo gestionar las cookies</h2>

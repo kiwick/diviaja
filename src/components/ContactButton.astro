@@ -1,9 +1,10 @@
 ---
 import Icon from './Icon.astro';
 import { whatsappHref } from '../config/site';
-interface Props { label: string; light?: boolean; compact?: boolean; arrow?: boolean; }
-const { label, light = false, compact = false, arrow = false } = Astro.props;
+interface Props { label: string; light?: boolean; compact?: boolean; arrow?: boolean; newTab?: boolean; }
+const { label, light = false, compact = false, arrow = false, newTab = false } = Astro.props;
 ---
-<a href={whatsappHref} class:list={['button', { 'button--light': light, 'button--compact': compact }]}>
+<a href={whatsappHref} target={newTab ? '_blank' : undefined} rel={newTab ? 'noopener noreferrer' : undefined} class:list={['button', { 'button--light': light, 'button--compact': compact }]}>
   {!arrow && <Icon name="whatsapp" />}<span>{label}</span>{arrow && <Icon name="arrow" />}
+  {newTab && <span class="visually-hidden"> (se abre en otra pestaña)</span>}
 </a>
